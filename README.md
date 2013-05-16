@@ -15,7 +15,7 @@ require("save-pixels")(lena, "png").pipe(process.stdout)
 
 This generates the following image:
 
-<img src="example/shift.png">
+<img src="https://raw.github.com/mikolalysenko/ndarray-translate/master/example/shift.png">
 
 ## Install
 
