@@ -5,7 +5,7 @@ var ops = require("ndarray-ops")
 var pool = require("typedarray-pool")
 
 function translateZeroBC(arr, t) {
-  var shape = arr.shape
+  var shape = arr.shape.slice()
     , d = shape.length
     , v = new Array(d)
     , u = new Array(d)
@@ -38,8 +38,8 @@ function translateZeroBC(arr, t) {
   }
   q = q.hi.apply(q, v)
   p = p.lo.apply(p, u)
-  var y_t = pool.malloc(ndarray.size(q), ndarray.dtype(arr))
-    , y = ndarray.ctor(y_t, q.shape, ndarray.stride(q.shape, ndarray.order(q)), 0)
+  var y_t = pool.malloc(q.size, arr.dtype)
+    , y = ndarray(y_t, q.shape)
   ops.assign(y, q)
   ops.assigns(arr, 0)
   ops.assign(p, y)

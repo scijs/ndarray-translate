@@ -1,11 +1,12 @@
 "use strict"
 
 var ndarray = require("ndarray")
+var zeros = require("zeros")
 var translate = require("../translate.js")
 
 require("tap").test("ndarray-translate", function(t) {
 
-  var x = ndarray.zeros([5])
+  var x = zeros([5])
   x.set(2, 1)
   
   translate(x, [1])
